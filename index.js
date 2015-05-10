@@ -383,4 +383,3 @@ function game() {
 }
 
 document.onmousemove = domousemove;
-document.body.onkeyup = dospace;
