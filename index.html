@@ -1,34 +1,19 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>CodePen - Hack React</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-
-  <body onload="game();" class='  wsite-theme-light'> 
+<body onload="game();" class='  wsite-theme-light'> 
 
 <!-- HR Logo -->
-
+      
 <img id="image" src="http://goo.gl/VAFLGN" alt="" width="30" height="30">
 
 <table border = 1 cellpadding="10">    
 
-<tr><th rowspan = 2>
+<tr><th rowspan = 2 valign="top">
 
 <input type="button" id="normal" style="z-index:3; position:absolute; top:490px; left:135px" value="Normal" onclick="normal();">
 
 <input type="button" id="hard" style="z-index:3; position:absolute; top:490px; left:245px" value="Hard" onclick="hard();">
 
 <div id="canvasesdiv" style="position:relative; width:408px; height:544px">
-
+    
 <canvas id="gameCanvas"
 style="z-index: 1;
 position:absolute;
@@ -37,7 +22,7 @@ top:0px;
 " height="544px" width="408">
 This text is displayed if your browser does not support HTML5 Canvas.
 </canvas>
-
+    
 <canvas id="effectCanvas"
 style="z-index: 2;
 position:absolute;
@@ -46,7 +31,7 @@ top:0px;
 " height="544px" width="408">
 This text is displayed if your browser does not support HTML5 Canvas.
 </canvas>
-
+    
 </div>
 
 </th><td>
@@ -58,21 +43,29 @@ This text is displayed if your browser does not support HTML5 Canvas.
 <tr><td>
 
 <noscript><p>This game requires Javascript.</p></noscript>
-
+    
     <h3><b>Controls</b></h3>
-
+    
     Select a difficulty mode to start (or restart) the game.<br>
     Move the mouse to control the paddle.<br>
 
    <h3><b>Design Your Own Board!</b></h3>
-
+  
   Want to create a special brick layout?  Use the <a href="http://codepen.io/mwirth7070/full/QbjgMX/" target="_blank">board builder</a> tool and paste the output below:<br>
-
+  
      <input type="Text" id="customGrid" size="25"/>
         <input type='button' onclick='boardRefresh()' value='SUBMIT'> 
-
+Color Scheme:
+<select id="colorChoice" onchange='boardRefresh()'>
+  <option value=220>Blue</option>
+  <option value=420>Orange</option>
+  <option value=90>Green</option>
+  <option value=350>Red</option>
+  <option value=300>Purple</option>
+</select>
+        
         <h3><b>Remarks</b></h3>
-
+  
     This is Hack React. It is a Javascript version of the old Atari game Breakout.
     It should play in any browser that supports the HTML 5 CANVAS tag.  This was built leveraging source code from Jack Palevich, which can be found <a href="http://jacks-hacks.appspot.com/brickbreak/brickbreak.html" target="_blank">here</a>.
 
@@ -81,17 +74,17 @@ This text is displayed if your browser does not support HTML5 Canvas.
 <ul class="b">
 
  <li>Difficulty modes</li>
+ <li>Power ups</li>
  <li>Enhanced graphics</li>
  <li>Custom brick layout functionality</li>
  <li>Start game input and animation</li>
- <li>Color scheme</li>
+ <li>Color scheme and styling</li>
  <li>Ball shape and behavior</li>
  <li>Embedded score and ball count elements into canvas</li>
  <li>User launch interface</li>
  <li>Grid and tile sizes</li>
  <li>Destruction sound and visual effects</li>
  <li>End of game routine</li>
- <li>CSS styling</li>
  <li>Additional documentation</li>
 
 </ul>
@@ -101,7 +94,7 @@ This text is displayed if your browser does not support HTML5 Canvas.
 </table>
 
 </body> 
-
+    
 <table style="color:white">
 <tr><td id='highscore'>0</td>
 <td id='score'>0</td>
@@ -109,11 +102,5 @@ This text is displayed if your browser does not support HTML5 Canvas.
 </table></tr></td>
 
 <audio id="soundEfx" src="http://www.onlywebpro.com/demo/gamedev/pop.wav" style="display: none;"></audio>
-
-</html>
-
-  <script src="js/index.js"></script>
-
-</body>
 
 </html>
