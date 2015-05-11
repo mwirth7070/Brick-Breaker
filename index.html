@@ -55,14 +55,16 @@ This text is displayed if your browser does not support HTML5 Canvas.
   
      <input type="Text" id="customGrid" size="25"/>
         <input type='button' onclick='boardRefresh()' value='SUBMIT'> 
-Color Scheme:
-<select id="colorChoice" onchange='boardRefresh()'>
-  <option value=220>Blue</option>
-  <option value=420>Orange</option>
-  <option value=90>Green</option>
-  <option value=350>Red</option>
-  <option value=300>Purple</option>
-</select>
+Pick a color scheme:
+  <input type="image" src="http://www.student.oulu.fi/~laurirai/www/css/middle/blue.gif" alt="Blue" width="15" height="15" onclick='colorRefresh(220)'>
+  
+  <input type="image" src="http://www.clker.com/cliparts/L/u/0/1/d/C/green-square.svg" alt="Green" width="15" height="15" onclick='colorRefresh(90)'>
+  
+    <input type="image" src="http://38.media.tumblr.com/avatar_964a9bce7d33_128.png" alt="Orange" width="15" height="15" onclick='colorRefresh(420)'>
+  
+    <input type="image" src="http://www.clker.com/cliparts/p/T/a/1/W/9/pink-square.svg" alt="Pink" width="15" height="15" onclick='colorRefresh(350)'>
+  
+    <input type="image" src="http://www.clker.com/cliparts/4/w/5/c/0/4/dark-purple-square.svg" alt="Purple" width="15" height="15" onclick='colorRefresh(300)'>
         
         <h3><b>Remarks</b></h3>
   
