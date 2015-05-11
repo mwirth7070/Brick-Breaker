@@ -47,19 +47,25 @@ var ballDX = ballSpeed;
 var ballDY = ballSpeed;
 var ballNerfed = false;
 var canvas;
+var pauseStatus = 1;
+
+function randomColor(){
+  return "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")";
+
+}
 
 function hidebuttons(){
-    document.getElementById("normal").style.visibility = "hidden";
+    document.getElementById("easy").style.visibility = "hidden";
 	document.getElementById("hard").style.visibility = "hidden";
     document.getElementById("image").style.visibility = "hidden";
 }
 
 function showbuttons(){
-    document.getElementById("normal").style.visibility = "visible";
+    document.getElementById("easy").style.visibility = "visible";
 	document.getElementById("hard").style.visibility = "visible";
 }
 
-function normal() {    
+function easy() {    
     hidebuttons();
     livesPerGame = 3;
     ballSpeed = 4;
@@ -80,8 +86,8 @@ erase = eval("[" + document.getElementById('customGrid').value + "]");
 setupBricks();
 }
 
-function colorRefresh(){
- colorChoice = parseInt(document.getElementById('colorChoice').value);
+function colorRefresh(colorInput){
+ colorChoice = colorInput;
 brickColor = [
     // Block color styling
     "hsl("+colorChoice+", 100%, 50%)",
@@ -114,7 +120,7 @@ for (var i = 0; i < bricks.length; i++) {
 }
 
 function drawPicture(){
-    
+  
 var context = canvas.getContext('2d');
 
 context.font = "16px Arial";
@@ -122,13 +128,13 @@ context.fillStyle = "blue";
 context.textAlign = "center";
 context.clearRect(0, 0, fieldW, fieldH);
 context.fillText("High Score: " + highScore + "  Score: " + score + "  Balls Remaining: " + lives, canvas.width - 200, canvas.height - 3); 
-
+ 
     // Draws background
     
-    context.fillStyle = "black";
-    
-    context.fillRect(0, 0, fieldW, fieldH - 20);
-    
+context.fillStyle = "black";
+context.fillRect(0, 0, fieldW, fieldH - 20);
+  
+
     // Draws bricks
  
     var x, y;
@@ -156,15 +162,22 @@ context.fillText("High Score: " + highScore + "  Score: " + score + "  Balls Rem
     // Draws paddle
 
     if (lives > 0) {
+      if (paddleBoost > 0){
+        context.fillStyle = randomColor();
+      }
+      else {
         context.fillStyle = paddleColor;
+      }
         context.fillRect(paddleX, paddleY, paddleW + paddleBoost,  paddleH);
       
      // Draws power up
       
      if(powerHit && pDown < fieldH - 35){    
-        context.fillStyle = "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")";
+        context.fillStyle = randomColor();
         context.fillRect(pAcross, pDown, brickW, brickH);
+        if (pauseStatus == 1){
         pDown += 1; 
+        }
      }
      else{
        powerHit = false;
@@ -271,7 +284,7 @@ function moveBall() {
 if (overlapPU (pAcross, pDown, brickW, brickH, paddleX, paddleY, paddleW, paddleH) && powerHit) {
         paddleBoost = 25;  
         powerHit = false;
-        paddleColor = "green";  
+        paddleColor = randomColor();  
 }
     
     var ballBottom = ballY + ballH;
@@ -343,9 +356,8 @@ function startGame() {
     serveBall();
 }
 
-// Start the game
-
 function domousemove(event) {
+  if (pauseStatus == 1){
     var x=event.clientX;
     paddleX = x - 10; // Adjust for the left margin on the Canvas tag.
     paddleX -= (paddleW / 2);
@@ -357,14 +369,15 @@ function domousemove(event) {
     if (paddleX > rightEdge) {
         paddleX = rightEdge;
     }
+    }
 }
 
 function gameStep() {
     drawPicture();
-    if (lives > 0) {
+    if (lives > 0 && pauseStatus == 1) {
         moveBall();
     }
-    
+
 }
 
 function setupGlobals() {
@@ -383,3 +396,9 @@ function game() {
 }
 
 document.onmousemove = domousemove;
+
+document.onkeypress = function(event) {   
+if (event.keyCode == 32) {
+     pauseStatus *= -1;
+   }
+}
