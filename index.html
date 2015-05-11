@@ -1,6 +1,4 @@
 <body onload="game();" class='  wsite-theme-light'> 
-
-<!-- HR Logo -->
       
 <img id="image" src="http://goo.gl/VAFLGN" alt="" width="30" height="30">
 
@@ -8,9 +6,9 @@
 
 <tr><th rowspan = 2 valign="top">
 
-<input type="button" id="normal" style="z-index:3; position:absolute; top:490px; left:135px" value="Normal" onclick="normal();">
+<input type="button" id="easy" style="z-index:3; position:absolute; top:450px; left:135px" value="EASY" onclick="easy();">
 
-<input type="button" id="hard" style="z-index:3; position:absolute; top:490px; left:245px" value="Hard" onclick="hard();">
+<input type="button" id="hard" style="z-index:3; position:absolute; top:450px; left:245px" value="HARD" onclick="hard();">
 
 <div id="canvasesdiv" style="position:relative; width:408px; height:544px">
     
@@ -31,7 +29,7 @@ top:0px;
 " height="544px" width="408">
 This text is displayed if your browser does not support HTML5 Canvas.
 </canvas>
-    
+
 </div>
 
 </th><td>
@@ -47,7 +45,7 @@ This text is displayed if your browser does not support HTML5 Canvas.
     <h3><b>Controls</b></h3>
     
     Select a difficulty mode to start (or restart) the game.<br>
-    Move the mouse to control the paddle.<br>
+    Move the mouse to control the paddle, space bar to pause/unpause.<br>
 
    <h3><b>Design Your Own Board!</b></h3>
   
@@ -73,6 +71,8 @@ Pick a color scheme:
 
 <P><P>Modifications from the original include the following:
 
+ <table><tr><td>
+  
 <ul class="b">
 
  <li>Difficulty modes</li>
@@ -81,15 +81,19 @@ Pick a color scheme:
  <li>Custom brick layout functionality</li>
  <li>Start game input and animation</li>
  <li>Color scheme and styling</li>
+  </ul>
+   
+   </td><td>  
+   <ul class="b">
  <li>Ball shape and behavior</li>
  <li>Embedded score and ball count elements into canvas</li>
- <li>User launch interface</li>
  <li>Grid and tile sizes</li>
  <li>Destruction sound and visual effects</li>
  <li>End of game routine</li>
- <li>Additional documentation</li>
-
-</ul>
+ <li>Pause function</li>
+ </ul>
+   </td></tr>
+  </table>
 
 </tr></td>
 
